@@ -8,7 +8,7 @@
     --primary: hsl(180, 29%, 50%);
     --background: hsl(180, 52%, 96%);
     --light-cyan: hsl(180, 31%, 95%);
-    --dark-cryan: hsl(180, 8%, 52%);
+    --dark-cyan: hsl(180, 8%, 52%);
     --very-dark-cyan: hsl(180, 14%, 20%);
 }
 body {
@@ -21,4 +21,51 @@ h1 {
     font-size: 3em;
     color: var(--very-dark-cyan);
     margin-top: 2em;
+}
+.jobs-container {
+    width: 800px;
+    height: auto;
+    margin: 2em auto;
+    background-color: var(--background);
+}
+.jobs-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+    background-color: #fff;
+    margin-top: 15px;
+    padding: 15px 25px;
+    border-left: 4px solid var(--primary);
+}
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.description {
+    padding: 15px;
+}
+.description > * {
+    margin-top: 10px;
+}
+.description .company {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 1.3em;
+}
+.description .first-row ,
+.description .third-row {
+    span {
+        margin-right: 10px;
+    }
+}
+.description .second-row p {
+    font-size: 1.3em;
+    font-weight: 700;
+    color: var(--very-dark-cyan);
+}
+.description .third-row span {
+    color: var(--dark-cyan);
 }
