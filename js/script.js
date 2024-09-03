@@ -19,7 +19,7 @@ const fetchData = async () => {
   }
 };
 
-let jobsContainer = document.querySelector(".jobs-container");
+const jobsContainer = document.querySelector(".jobs-container");
 
 // Function that populates HTML
 const populateHTML = async () => {
@@ -28,14 +28,17 @@ const populateHTML = async () => {
   dataList.forEach((job) => {
     // Checking if object has new and featured key value true or not
     const hasNew = job.new === true;
-    const newButton = hasNew ? `<button class='new'>New!</button>` : "";
+    const newButton = hasNew ? `<button class='new-btn'>New!</button>` : "";
 
     const hasFeatured = job.featured === true;
-    
+
 
     const featuredButton = hasFeatured
-      ? `<button class='new'>Featured!</button>`
+      ? `<button class='featured-btn'>Featured!</button>`
       : "";
+
+    // Each category from array alone
+    const categoryHTML = job.categories.map(category => `<button classs='category'>${category}</button>`).join("");
 
     jobsContainer.innerHTML += `<div class='jobs-wrapper'>
                                   <div class='content'>
@@ -46,7 +49,9 @@ const populateHTML = async () => {
                                       <div class='third-row'><span>${job.postedAt}</span>&#x2022;<span>${job.contract}</span>&#x2022;<span>${job.location}</span></div>
                                     </div>
                                   </div>
-                                  <div class='categories'></div>
+                                  <div class='categories'>
+                                    ${categoryHTML}
+                                  </div>
                                 </div>`;
   });
 };

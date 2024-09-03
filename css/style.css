@@ -69,3 +69,16 @@ h1 {
 .description .third-row span {
     color: var(--dark-cyan);
 }
+.description button {
+    text-transform: uppercase;
+    border: none;
+    padding: 5px;
+    border-radius: 20px;
+    color: #fff;
+}
+.description .new-btn {
+    background-color: var(--primary);
+}
+.description .featured-btn {
+    background-color: var(--very-dark-cyan);
+}
