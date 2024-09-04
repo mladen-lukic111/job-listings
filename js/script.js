@@ -37,6 +37,7 @@ const populateHTML = async () => {
       ? `<button class='featured-btn'>Featured!</button>`
       : "";
 
+
     // Each category from array alone
     const categoryHTML = job.categories.map(category => `<button classs='category'>${category}</button>`).join("");
 
