@@ -57,6 +57,14 @@ const populateHTML = async () => {
   });
 };
 
+let inputValue = document.querySelector('.search-field');
+
+inputValue.addEventListener("input", (e) => {
+  let v = e.target.value;
+  console.log(v);
+})
+
+
 // Calling function for fetching data
 fetchData();
 
