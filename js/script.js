@@ -39,7 +39,7 @@ const populateHTML = async () => {
 
 
     // Each category from array alone
-    const categoryHTML = job.categories.map(category => `<button classs='category'>${category}</button>`).join("");
+    const categoryHTML = job.categories.map(category => `<button class='category'>${category}</button>`).join("");
 
     jobsContainer.innerHTML += `<div class='jobs-wrapper'>
                                   <div class='content'>
@@ -55,14 +55,31 @@ const populateHTML = async () => {
                                   </div>
                                 </div>`;
   });
+
+  let categoryArray = [];
+
+  const buttonsCategory = () => {
+    let buttonsCategory = document.querySelectorAll(".category");
+    buttonsCategory.forEach(button => {
+      button.addEventListener('click', () => {
+        // If there is no that item in the array it will be added
+        if(!(categoryArray.includes(button.textContent))) {
+          categoryArray.push(button.textContent);
+        }
+        // If the item is in the array
+        else {
+          alert('Item already exist.');
+        }
+        console.log(categoryArray);
+      });
+    });
+  };
+
+
+  // Function for getting value from clicked category
+  buttonsCategory();
+
 };
-
-let inputValue = document.querySelector('.search-field');
-
-inputValue.addEventListener("input", (e) => {
-  let v = e.target.value;
-  console.log(v);
-})
 
 
 // Calling function for fetching data
