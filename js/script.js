@@ -32,14 +32,14 @@ const populateHTML = async () => {
 
     const hasFeatured = job.featured === true;
 
-
     const featuredButton = hasFeatured
       ? `<button class='featured-btn'>Featured!</button>`
       : "";
 
-
-    // Each category from array alone
-    const categoryHTML = job.categories.map(category => `<button class='category'>${category}</button>`).join("");
+    // Each category from array
+    const categoryHTML = job.categories
+      .map((category) => `<button class='category'>${category}</button>`)
+      .join("");
 
     jobsContainer.innerHTML += `<div class='jobs-wrapper'>
                                   <div class='content'>
@@ -54,33 +54,42 @@ const populateHTML = async () => {
                                     ${categoryHTML}
                                   </div>
                                 </div>`;
+
   });
 
   let categoryArray = [];
 
+  let categoryContainer = document.querySelector('.category-wrapper');
+
   const buttonsCategory = () => {
     let buttonsCategory = document.querySelectorAll(".category");
-    buttonsCategory.forEach(button => {
-      button.addEventListener('click', () => {
+    buttonsCategory.forEach((button) => {
+      button.addEventListener("click", () => {
         // If there is no that item in the array it will be added
-        if(!(categoryArray.includes(button.textContent))) {
+        if (!categoryArray.includes(button.textContent)) {
           categoryArray.push(button.textContent);
         }
         // If the item is in the array
         else {
-          alert('Item already exist.');
+          return categoryArray;
         }
-        console.log(categoryArray);
+        //console.log(categoryArray);
+
+        // IMPORTANT
+        // Categories Container needs to be empty before running through the array and dinamically adding items.
+        categoryContainer.innerHTML = ""; 
+        categoryArray.forEach(category => {
+            categoryContainer.innerHTML += `<button class="category-filter-btn">${category}<img src="./images/icon-remove.svg"></button>`;
+        });
+        categoryContainer.style.opacity = "1";
       });
     });
   };
 
-
-  // Function for getting value from clicked category
+  // Function for getting value from clicked category and populating search bar
   buttonsCategory();
 
 };
-
 
 // Calling function for fetching data
 fetchData();
